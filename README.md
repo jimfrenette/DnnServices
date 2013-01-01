@@ -1,5 +1,3 @@
-DnnServices
-============
 
 DnnMvcMobile
 -------------

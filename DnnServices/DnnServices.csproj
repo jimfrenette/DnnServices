@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DnnServicesObjects">
-      <HintPath>..\DnnServicesObjects\bin\Debug\DnnServicesObjects.dll</HintPath>
-    </Reference>
     <Reference Include="DotNetNuke">
       <HintPath>..\..\bin\DotNetNuke.dll</HintPath>
     </Reference>
@@ -68,6 +65,12 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ServicesRouteMapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DnnServicesObjects\DnnServicesObjects.csproj">
+      <Project>{06bd43ff-eb8d-497b-8e95-639afd94934f}</Project>
+      <Name>DnnServicesObjects %28DnnServicesObjects\DnnServicesObjects%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

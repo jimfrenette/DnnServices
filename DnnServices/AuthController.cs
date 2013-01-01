@@ -44,7 +44,9 @@ namespace DnnServices
             else
             {
                 auth.LogTypeKey = "LOGIN_SUCCESS";
-                LogAction(auth);
+                //UserInfo userInfo = UserController.GetUserByName(auth.UserName);
+                Services services = new Services();
+                services.Log(auth);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
         }
@@ -54,14 +56,10 @@ namespace DnnServices
         public HttpResponseMessage Host(AuthorizeAction auth)
         {
             auth.LogTypeKey = "LOGIN_SUPERUSER";
-            LogAction(auth);
-            return Request.CreateResponse(HttpStatusCode.OK);
-        }
-
-        public void LogAction(AuthorizeAction auth)
-        {
+            //UserInfo userInfo = UserController.GetUserByName(auth.UserName);
             Services services = new Services();
             services.Log(auth);
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
     }

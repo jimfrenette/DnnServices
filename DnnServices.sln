@@ -1,7 +1,29 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnnServices", "DnnServices.csproj", "{1782042A-749A-4E85-90F0-89BDCDDF3332}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E2B2CC06-AC3E-4B7E-A12B-15FE8C98DCC8}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DnnMvcMobile", "DnnMvcMobile", "{B7B0C720-7031-40CC-B4F6-BD5EC8E8B2B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DnnServices", "DnnServices", "{05077D77-1680-4CEB-AAC5-EFC1EF06EE6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DnnServicesObjects", "DnnServicesObjects", "{E3543AE4-E886-4D8E-A262-5763036605E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnnServices", "DnnServices\DnnServices.csproj", "{1782042A-749A-4E85-90F0-89BDCDDF3332}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnnServicesObjects", "DnnServicesObjects\DnnServicesObjects.csproj", "{06BD43FF-EB8D-497B-8E95-639AFD94934F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9914E522-A944-4185-9365-3AF9ECD5BCC0}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnnMvcMobile", "DnnMvcMobile\DnnMvcMobile.csproj", "{A59696E8-B4CA-44D4-8F7E-4F284701A45F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,8 +35,21 @@ Global
 		{1782042A-749A-4E85-90F0-89BDCDDF3332}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1782042A-749A-4E85-90F0-89BDCDDF3332}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1782042A-749A-4E85-90F0-89BDCDDF3332}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06BD43FF-EB8D-497B-8E95-639AFD94934F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06BD43FF-EB8D-497B-8E95-639AFD94934F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06BD43FF-EB8D-497B-8E95-639AFD94934F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06BD43FF-EB8D-497B-8E95-639AFD94934F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A59696E8-B4CA-44D4-8F7E-4F284701A45F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59696E8-B4CA-44D4-8F7E-4F284701A45F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59696E8-B4CA-44D4-8F7E-4F284701A45F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59696E8-B4CA-44D4-8F7E-4F284701A45F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A59696E8-B4CA-44D4-8F7E-4F284701A45F} = {B7B0C720-7031-40CC-B4F6-BD5EC8E8B2B3}
+		{1782042A-749A-4E85-90F0-89BDCDDF3332} = {05077D77-1680-4CEB-AAC5-EFC1EF06EE6E}
+		{06BD43FF-EB8D-497B-8E95-639AFD94934F} = {E3543AE4-E886-4D8E-A262-5763036605E4}
 	EndGlobalSection
 EndGlobal

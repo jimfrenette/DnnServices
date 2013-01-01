@@ -1,0 +1,40 @@
+﻿@model DnnMvcMobile.Models.Authentication
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@section Header {
+    @*Html.ActionLink("Cancel", "Index", "Home", null, new { data_icon = "arrow-l", data_rel = "back" })*@
+    <h1>@ViewBag.Title</h1>
+}
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post)) {
+    @Html.ValidationSummary()
+
+	<input type="hidden" name="DnnHttpAlias" value="dnn7" />
+    <div data-inset="true">
+        <div>
+			@Html.LabelFor(m => m.Username)
+		</div>
+        <div>
+            @Html.TextBoxFor(m => m.Username)            
+        </div>
+        <div>
+			@Html.LabelFor(m => m.Password)
+		</div>
+        <div>
+            @Html.PasswordFor(m => m.Password)
+        </div>
+        <div class="ui-grid-a" style="margin-top:30px">
+	        <div class="ui-block-a"><input type="submit" value="Login" /></div>
+            <div class="ui-block-b"><a href="~/" data-role="button" data-direction="reverse" data-theme="c">Cancel</a></div>
+        </div>
+    </div>
+}
+
+<ul>@ViewBag.Message</ul>
+
+@*section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

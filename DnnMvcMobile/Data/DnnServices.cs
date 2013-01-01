@@ -34,14 +34,14 @@ namespace DnnMvcMobile.Data
             return response;
         }
 
-        private static string DoRequest(HttpWebRequest wr, out HttpStatusCode statusCode, out string errorMsg, ref CookieContainer cookies)
+        private static string DoRequest(HttpWebRequest webRequest, out HttpStatusCode statusCode, out string errorMsg, ref CookieContainer cookies)
         {
             string response = String.Empty;
             errorMsg = null;
             statusCode = HttpStatusCode.NoContent;
             try
             {
-                using (WebResponse webResponse = wr.GetResponse())
+                using (WebResponse webResponse = webRequest.GetResponse())
                 {
                     using (System.IO.StreamReader sr = new System.IO.StreamReader(webResponse.GetResponseStream()))
                     {
@@ -88,8 +88,8 @@ namespace DnnMvcMobile.Data
             {
                 dataStream.Write(byteArray, 0, byteArray.Length);
             }
-            string responseString = DoRequest(webRequest, out statusCode, out errorMsg, ref cookies);
-            return responseString;
+            string response = DoRequest(webRequest, out statusCode, out errorMsg, ref cookies);
+            return response;
         }
 
 

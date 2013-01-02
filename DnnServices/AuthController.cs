@@ -2,7 +2,6 @@
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using DotNetNuke.Entities.Users;
 using DotNetNuke.Services.Log.EventLog;
 using DotNetNuke.Web.Api;
 
@@ -44,10 +43,9 @@ namespace DnnServices
             else
             {
                 auth.LogTypeKey = "LOGIN_SUCCESS";
-                //UserInfo userInfo = UserController.GetUserByName(auth.UserName);
                 Services services = new Services();
                 services.Log(auth);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return Request.CreateResponse(HttpStatusCode.OK, services.GetUserByName(auth.UserName));
             }
         }
 
@@ -56,7 +54,6 @@ namespace DnnServices
         public HttpResponseMessage Host(AuthorizeAction auth)
         {
             auth.LogTypeKey = "LOGIN_SUPERUSER";
-            //UserInfo userInfo = UserController.GetUserByName(auth.UserName);
             Services services = new Services();
             services.Log(auth);
             return Request.CreateResponse(HttpStatusCode.OK);

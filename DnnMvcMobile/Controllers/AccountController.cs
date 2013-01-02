@@ -4,11 +4,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Newtonsoft.Json.Linq;
+using DnnServicesObjects;
 
 namespace DnnMvcMobile.Controllers
 {
     using Data;
     using Models;
+    using Newtonsoft.Json;
 
     [Authorize]
     public class AccountController : Controller
@@ -66,6 +68,11 @@ namespace DnnMvcMobile.Controllers
             if (statusCode == HttpStatusCode.OK)
             {
                 FormsAuthentication.SetAuthCookie(credentials.Username, false);
+                
+                //deserialize response
+                ServicesUser servicesUser = new ServicesUser();
+                servicesUser = JsonConvert.DeserializeObject<ServicesUser>(response);
+
                 return RedirectToAction("Index", "Home");
             }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace DnnServicesObjects
 {
+
     public class ServicesUser
     {
         public int AffiliateID { get; set; }
@@ -18,4 +19,5 @@ namespace DnnServicesObjects
         public int UserID { get; set; }
         public string Username { get; set; }
     }
+
 }

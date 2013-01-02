@@ -56,7 +56,7 @@ namespace DnnServices
             auth.LogTypeKey = "LOGIN_SUPERUSER";
             Services services = new Services();
             services.Log(auth);
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return Request.CreateResponse(HttpStatusCode.OK, services.GetUserByName(auth.UserName));
         }
 
     }

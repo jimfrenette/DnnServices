@@ -66,11 +66,8 @@ namespace DnnMvcMobile.Data
 
         internal static string GetUrl(string portalAlias, string module, string controller, string action, bool secure)
         {
-            string scheme = "";
-            if (secure)
-                scheme = Uri.UriSchemeHttps + Uri.SchemeDelimiter;
-            else
-                scheme = Uri.UriSchemeHttp + Uri.SchemeDelimiter;
+            string scheme = Uri.UriSchemeHttp + Uri.SchemeDelimiter;
+            if (secure) scheme = Uri.UriSchemeHttps + Uri.SchemeDelimiter;
 
             string url = string.Format("{0}{1}/DesktopModules/{2}/API/{3}/{4}", scheme, portalAlias, module, controller, action);
             return url;

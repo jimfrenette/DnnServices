@@ -10,16 +10,17 @@ namespace DnnServices
     public class Services : DotNetNuke.Entities.Modules.PortalModuleBase
     {
 
-        public void Log(ServicesAction auth)
+        public void Log(ServicesAction action)
         {
             EventLogController eventLog = new EventLogController();
 
             DotNetNuke.Services.Log.EventLog.LogInfo logInfo = default(DotNetNuke.Services.Log.EventLog.LogInfo);
             logInfo = new LogInfo();
-            logInfo.LogUserName = auth.Username;
+            logInfo.LogUserName = action.Username;
             logInfo.LogPortalID = PortalId;
-            logInfo.LogTypeKey = auth.LogTypeKey;
-            logInfo.AddProperty("Requested By", auth.AppName);
+            logInfo.LogTypeKey = action.LogTypeKey;
+            logInfo.LogServerName = action.LogServerName;
+            logInfo.AddProperty("Requested By", action.AppName);
             //logInfo.AddProperty("PropertyName2", propertyValue2);
 
             eventLog.AddLog(logInfo);

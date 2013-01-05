@@ -45,37 +45,43 @@ namespace DnnMvcMobile.Controllers
             HttpStatusCode statusCode;
             CookieContainer cookies = credentials.Cookies;
 
-            ServicesAction auth = new ServicesAction();
-            auth.AppName = "DnnMvcMobile";
-            auth.LogServerName = System.Environment.MachineName;
-            auth.Username = credentials.Username;
-            string body = JsonConvert.SerializeObject(auth);
+            ServicesAction action = new ServicesAction();
+            action.AppName = "DnnMvcMobile";
+            action.LogServerName = System.Environment.MachineName;
+            action.LogTypeKey = "LOGIN_FAILURE"; //default for this action
+            action.Username = credentials.Username;
+            string body = JsonConvert.SerializeObject(action);
 
             string response = DnnServices.PostRequest(url, credentials.Username, credentials.Password, body, out statusCode, out errorMsg, ref cookies);
-            switch (statusCode)
-            {
-                case HttpStatusCode.Unauthorized:
-                case HttpStatusCode.Forbidden:
-                    ViewBag.Message = errorMsg;
-                    break;
-                default:
-                    //something else entirely!
-                    ViewBag.Message = "<li>Please contact the system administrator for http://" + credentials.DnnHttpAlias + "</li><li>Http Status: " + statusCode.ToString() + "</li><li>Error Message: " + errorMsg + "</li>";
-                    break;
-            }
-
             if (statusCode == HttpStatusCode.OK)
             {
                 FormsAuthentication.SetAuthCookie(credentials.Username, false);
-                
+
                 //deserialize response
                 ServicesUser servicesUser = new ServicesUser();
                 servicesUser = JsonConvert.DeserializeObject<ServicesUser>(response);
                 //TODO pass servicesUser as a model to Account View
                 return RedirectToAction("Index", "Home");
             }
-
-            return View();
+            else
+            {
+                switch (statusCode)
+                {
+                    case HttpStatusCode.Unauthorized:
+                    case HttpStatusCode.Forbidden:
+                        ViewBag.Message = errorMsg;
+                        //post LOGIN_FAILURE to event log
+                        url = DnnServices.GetUrl(credentials.DnnHttpAlias, "Services", "Log", "LogAnonymous", false);
+                        DnnServices.PostRequest(url, credentials.Username, credentials.Password, body, out statusCode, out errorMsg, ref cookies);
+                        ViewBag.Message += " " + errorMsg;
+                        break;
+                    default:
+                        //something else entirely!
+                        ViewBag.Message = "<li>Please contact the system administrator for http://" + credentials.DnnHttpAlias + "</li><li>Http Status: " + statusCode.ToString() + "</li><li>Error Message: " + errorMsg + "</li>";
+                        break;
+                }
+                return View();
+            }
         }
 
         public ActionResult LogOff()

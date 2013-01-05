@@ -34,29 +34,29 @@ namespace DnnServices
         /// <returns></returns>
         [DnnAuthorize()]
         [HttpPost]
-        public HttpResponseMessage Login(ServicesAction auth)
+        public HttpResponseMessage Login(ServicesAction action)
         {
-            if (auth.Username == "host")
+            if (action.Username == "host")
             {
-                return Host(auth);
+                return Host(action);
             }
             else
             {
-                auth.LogTypeKey = "LOGIN_SUCCESS";
+                action.LogTypeKey = "LOGIN_SUCCESS";
                 Services services = new Services();
-                services.Log(auth);
-                return Request.CreateResponse(HttpStatusCode.OK, services.GetUserByName(auth.Username));
+                services.Log(action);
+                return Request.CreateResponse(HttpStatusCode.OK, services.GetUserByName(action.Username));
             }
         }
 
         //[RequireHost] //default auth filter - removing this will still require host unless another auth filter is designated here
         [HttpPost]
-        public HttpResponseMessage Host(ServicesAction auth)
+        public HttpResponseMessage Host(ServicesAction action)
         {
-            auth.LogTypeKey = "LOGIN_SUPERUSER";
+            action.LogTypeKey = "LOGIN_SUPERUSER";
             Services services = new Services();
-            services.Log(auth);
-            return Request.CreateResponse(HttpStatusCode.OK, services.GetUserByName(auth.Username));
+            services.Log(action);
+            return Request.CreateResponse(HttpStatusCode.OK, services.GetUserByName(action.Username));
         }
 
     }

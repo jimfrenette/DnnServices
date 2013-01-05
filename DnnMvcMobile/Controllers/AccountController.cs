@@ -3,14 +3,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using DnnServicesObjects;
 
 namespace DnnMvcMobile.Controllers
 {
     using Data;
     using Models;
-    using Newtonsoft.Json;
 
     [Authorize]
     public class AccountController : Controller
@@ -45,12 +44,12 @@ namespace DnnMvcMobile.Controllers
             string errorMsg = null;
             HttpStatusCode statusCode;
             CookieContainer cookies = credentials.Cookies;
-            JObject jO = JObject.FromObject(new
-            {
-                UserName = credentials.Username,
-                AppName = "DnnMvcMobile"
-            });
-            string body = jO.ToString();
+
+            ServicesAction auth = new ServicesAction();
+            auth.AppName = "DnnMvcMobile";
+            auth.LogServerName = System.Environment.MachineName;
+            auth.Username = credentials.Username;
+            string body = JsonConvert.SerializeObject(auth);
 
             string response = DnnServices.PostRequest(url, credentials.Username, credentials.Password, body, out statusCode, out errorMsg, ref cookies);
             switch (statusCode)

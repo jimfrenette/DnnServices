@@ -6,18 +6,17 @@ using DnnServicesObjects;
 
 namespace DnnServices
 {
-    using Models;
 
     public class Services : DotNetNuke.Entities.Modules.PortalModuleBase
     {
 
-        public void Log(AuthorizeAction auth)
+        public void Log(ServicesAction auth)
         {
             EventLogController eventLog = new EventLogController();
 
             DotNetNuke.Services.Log.EventLog.LogInfo logInfo = default(DotNetNuke.Services.Log.EventLog.LogInfo);
             logInfo = new LogInfo();
-            logInfo.LogUserName = auth.UserName;
+            logInfo.LogUserName = auth.Username;
             logInfo.LogPortalID = PortalId;
             logInfo.LogTypeKey = auth.LogTypeKey;
             logInfo.AddProperty("Requested By", auth.AppName);

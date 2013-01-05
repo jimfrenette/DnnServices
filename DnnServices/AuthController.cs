@@ -4,10 +4,11 @@ using System.Net.Http;
 using System.Web.Http;
 using DotNetNuke.Services.Log.EventLog;
 using DotNetNuke.Web.Api;
+using DnnServicesObjects;
+
 
 namespace DnnServices
 {
-    using Models;
 
     public class AuthController : DnnApiController
     {
@@ -27,16 +28,15 @@ namespace DnnServices
         }
 
         /// <summary>
-        /// WebAPI deserializes json post into Model.AuthorizeAction
-        /// so long as the json maps to the model 
+        /// WebAPI deserializes json post into DnnServicesObjects.ServicesAction
         /// </summary>
-        /// <param name="AuthorizeAction">json object</param>
+        /// <param name="ServicesAction">json object</param>
         /// <returns></returns>
         [DnnAuthorize()]
         [HttpPost]
-        public HttpResponseMessage Login(AuthorizeAction auth)
+        public HttpResponseMessage Login(ServicesAction auth)
         {
-            if (auth.UserName == "host")
+            if (auth.Username == "host")
             {
                 return Host(auth);
             }
@@ -45,18 +45,18 @@ namespace DnnServices
                 auth.LogTypeKey = "LOGIN_SUCCESS";
                 Services services = new Services();
                 services.Log(auth);
-                return Request.CreateResponse(HttpStatusCode.OK, services.GetUserByName(auth.UserName));
+                return Request.CreateResponse(HttpStatusCode.OK, services.GetUserByName(auth.Username));
             }
         }
 
         //[RequireHost] //default auth filter - removing this will still require host unless another auth filter is designated here
         [HttpPost]
-        public HttpResponseMessage Host(AuthorizeAction auth)
+        public HttpResponseMessage Host(ServicesAction auth)
         {
             auth.LogTypeKey = "LOGIN_SUPERUSER";
             Services services = new Services();
             services.Log(auth);
-            return Request.CreateResponse(HttpStatusCode.OK, services.GetUserByName(auth.UserName));
+            return Request.CreateResponse(HttpStatusCode.OK, services.GetUserByName(auth.Username));
         }
 
     }

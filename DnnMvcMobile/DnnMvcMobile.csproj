@@ -258,7 +258,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DnnServicesObjects\DnnServicesObjects.csproj">
       <Project>{06bd43ff-eb8d-497b-8e95-639afd94934f}</Project>
-      <Name>DnnServicesObjects %28DnnServicesObjects\DnnServicesObjects%29</Name>
+      <Name>DnnServicesObjects</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

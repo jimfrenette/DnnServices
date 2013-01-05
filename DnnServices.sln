@@ -6,12 +6,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DnnMvcMobile", "DnnMvcMobile", "{B7B0C720-7031-40CC-B4F6-BD5EC8E8B2B3}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DnnServices", "DnnServices", "{05077D77-1680-4CEB-AAC5-EFC1EF06EE6E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DnnServicesObjects", "DnnServicesObjects", "{E3543AE4-E886-4D8E-A262-5763036605E4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnnServices", "DnnServices\DnnServices.csproj", "{1782042A-749A-4E85-90F0-89BDCDDF3332}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnnServicesObjects", "DnnServicesObjects\DnnServicesObjects.csproj", "{06BD43FF-EB8D-497B-8E95-639AFD94934F}"
@@ -46,10 +40,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{A59696E8-B4CA-44D4-8F7E-4F284701A45F} = {B7B0C720-7031-40CC-B4F6-BD5EC8E8B2B3}
-		{1782042A-749A-4E85-90F0-89BDCDDF3332} = {05077D77-1680-4CEB-AAC5-EFC1EF06EE6E}
-		{06BD43FF-EB8D-497B-8E95-639AFD94934F} = {E3543AE4-E886-4D8E-A262-5763036605E4}
 	EndGlobalSection
 EndGlobal

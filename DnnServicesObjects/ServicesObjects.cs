@@ -5,6 +5,15 @@ using System.Collections.Generic;
 namespace DnnServicesObjects
 {
 
+    public class ServicesAction
+    {
+        public string AppName { get; set; }
+        public string LogContent { get; set; }
+        public string LogServerName { get; set; }
+        public string LogTypeKey { get; set; }
+        public string Username { get; set; }
+    }
+
     public class ServicesUser
     {
         public int AffiliateID { get; set; }

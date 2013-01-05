@@ -71,7 +71,7 @@ namespace DnnMvcMobile.Controllers
                 //deserialize response
                 ServicesUser servicesUser = new ServicesUser();
                 servicesUser = JsonConvert.DeserializeObject<ServicesUser>(response);
-
+                //TODO pass servicesUser as a model to Account View
                 return RedirectToAction("Index", "Home");
             }
 

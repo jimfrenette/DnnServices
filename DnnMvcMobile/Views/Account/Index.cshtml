@@ -2,7 +2,7 @@
     ViewBag.Title = "Account";
 }
 
-<h1>@User.Identity.Name</h1>
+<h1>@User.Identity.Name ID: @TempData.UserID</h1>
 
 <div class="ui-grid-a">
 	<div class="ui-block-a"><a href="~/Account/LogOff" class="publish" data-role="button" data-theme="a">Logout</a></div>

@@ -44,7 +44,6 @@ namespace DnnMvcMobile.Controllers
             string errorMsg = null;
             HttpStatusCode statusCode;
             CookieContainer cookies = credentials.Cookies;
-
             ServicesAction action = new ServicesAction();
             action.AppName = "DnnMvcMobile";
             action.LogServerName = System.Environment.MachineName;
@@ -56,12 +55,11 @@ namespace DnnMvcMobile.Controllers
             if (statusCode == HttpStatusCode.OK)
             {
                 FormsAuthentication.SetAuthCookie(credentials.Username, false);
-
                 //deserialize response
                 ServicesUser servicesUser = new ServicesUser();
                 servicesUser = JsonConvert.DeserializeObject<ServicesUser>(response);
-                //TODO pass servicesUser as a model to Account View
-                return RedirectToAction("Index", "Home");
+                //TODO servicesUser data handling, at least UserID
+                return RedirectToAction("Index", "Account");
             }
             else
             {

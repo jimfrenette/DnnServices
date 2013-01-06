@@ -8,11 +8,10 @@ namespace DnnMvcMobile.Models
     {
         public string DnnHttpAlias { get; set; }
         internal CookieContainer Cookies { get; set; }
-        ////need login to returns this
-        //public int UserID { get; set; }
+        public int UserID { get; set; }
 
         [Required]
-        [Display(Name = "Username")]
+        [Display(Name = "Username")] 
         public string Username { get; set; }
 
         [Required]

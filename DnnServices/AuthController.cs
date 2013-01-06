@@ -36,16 +36,17 @@ namespace DnnServices
         [HttpPost]
         public HttpResponseMessage Login(ServicesAction action)
         {
-            if (action.Username == "host")
+            Services services = new Services();
+            ServicesUser servicesUser = services.GetUserByName(action.Username);
+            if (servicesUser.IsSuperUser)
             {
                 return Host(action);
             }
             else
             {
                 action.LogTypeKey = "LOGIN_SUCCESS";
-                Services services = new Services();
                 services.Log(action);
-                return Request.CreateResponse(HttpStatusCode.OK, services.GetUserByName(action.Username));
+                return Request.CreateResponse(HttpStatusCode.OK);
             }
         }
 
@@ -56,7 +57,7 @@ namespace DnnServices
             action.LogTypeKey = "LOGIN_SUPERUSER";
             Services services = new Services();
             services.Log(action);
-            return Request.CreateResponse(HttpStatusCode.OK, services.GetUserByName(action.Username));
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
     }
